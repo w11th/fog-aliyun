@@ -4,7 +4,8 @@ module Fog
   module Storage class Aliyun < Fog::Service
       recognizes :aliyun_oss_endpoint,
                  :aliyun_oss_location,
-                 :aliyun_oss_bucket
+                 :aliyun_oss_bucket,
+                 :aliyun_oss_internal
       requires   :aliyun_accesskey_id,
                  :aliyun_accesskey_secret
 
