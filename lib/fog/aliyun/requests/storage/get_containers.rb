@@ -41,7 +41,7 @@ module Fog
           end
 
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           resource = bucket + '/'
           ret = request(
             expects: [200, 203, 400],

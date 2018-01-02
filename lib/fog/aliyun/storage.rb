@@ -1,8 +1,7 @@
 require 'xmlsimple'
 
 module Fog
-  module Storage
-    class Aliyun < Fog::Service
+  module Storage class Aliyun < Fog::Service
       recognizes :aliyun_oss_endpoint,
                  :aliyun_oss_location,
                  :aliyun_oss_bucket
@@ -65,6 +64,7 @@ module Fog
           @aliyun_accesskey_id     = options[:aliyun_accesskey_id]
           @aliyun_accesskey_secret = options[:aliyun_accesskey_secret]
           @aliyun_oss_bucket       = options[:aliyun_oss_bucket]
+          @aliyun_oss_internal     = options[:aliyun_oss_internal] || false
 
           # check for the parameters
           missing_credentials = []
@@ -175,6 +175,14 @@ module Fog
           signature[-1] = ''
 
           signature
+        end
+
+        def build_endpoint(prefix)
+          if @aliyun_oss_internal
+            "#{@scheme}://#{prefix}-internal.aliyuncs.com"
+          else
+            "#{@scheme}://#{prefix}.aliyuncs.com"
+          end
         end
       end
 

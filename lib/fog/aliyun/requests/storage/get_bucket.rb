@@ -4,7 +4,7 @@ module Fog
       class Real
         def get_bucket(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           resource = bucket + '/'
           ret = request(
             expects: [200, 203],
@@ -32,7 +32,7 @@ module Fog
 
         def get_bucket_acl(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?acl'
           resource = bucket + '/' + attribute
           ret = request(
@@ -48,7 +48,7 @@ module Fog
 
         def get_bucket_CORSRules(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?cors'
           resource = bucket + '/' + attribute
           ret = request(
@@ -66,7 +66,7 @@ module Fog
 
         def get_bucket_lifecycle(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?lifecycle'
           resource = bucket + '/' + attribute
           ret = request(
@@ -84,7 +84,7 @@ module Fog
 
         def get_bucket_logging(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?logging'
           resource = bucket + '/' + attribute
           ret = request(
@@ -100,7 +100,7 @@ module Fog
 
         def get_bucket_referer(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?referer'
           resource = bucket + '/' + attribute
           ret = request(
@@ -116,7 +116,7 @@ module Fog
 
         def get_bucket_website(bucket)
           location = get_bucket_location(bucket)
-          endpoint = 'http://' + location + '.aliyuncs.com'
+          endpoint = build_endpoint(location)
           attribute = '?website'
           resource = bucket + '/' + attribute
           ret = request(

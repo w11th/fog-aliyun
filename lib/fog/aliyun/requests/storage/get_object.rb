@@ -14,8 +14,9 @@ module Fog
           endpoint = options[:endpoint]
           if nil == endpoint
             location = get_bucket_location(bucket)
-            endpoint = 'http://' + location + '.aliyuncs.com'
+            endpoint = build_endpoint(location)
           end
+
           resource = bucket + '/' + object
           para = {
             expects: [200, 206, 404],
